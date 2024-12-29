@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Character Counter</title>
+    <style>
+        .counter {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+        }
+        .char{
+            text-align: center;
+            margin-top: 120px;
+        }
+        body{
+            background-color: lightpink;
+        }
+        #message{
+            border: none;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="char">
+ <h2>Type your message!</h2>
+    
+    <textarea id="message" rows="7" cols="40" placeholder="Type your message here..."></textarea>
+
+    <div class="counter">
+        <p>Characters typed: <span id="charCount">0</span> / <span id="maxCount">200</span></p>
+        <p>Remaining characters: <span id="remainingCount">200</span></p>
+    </div>
+    </div>
+
+   
+
+    <script>
+        // Set the maximum number of characters allowed
+        var maxChars = 200;
+
+        var messageInput = document.getElementById("message");
+        var charCountElement = document.getElementById("charCount");
+        var remainingCountElement = document.getElementById("remainingCount");
+
+        // Event listeneor 
+        messageInput.addEventListener("input", function() {
+            
+            var typedChars = messageInput.value.length;
+            if(typedChars>=200)
+        {
+            alert(typedChars.textContent = "Character Limit Reached")
+        }
+           
+            charCountElement.textContent = typedChars;
+            remainingCountElement.textContent = maxChars - typedChars;
+
+           
+            if (typedChars >= maxChars) {
+                remainingCountElement.classList.add("error");
+                
+            } else {
+                remainingCountElement.classList.remove("error");
+            }
+        });
+    </script>
+
+</body>
+</html>
